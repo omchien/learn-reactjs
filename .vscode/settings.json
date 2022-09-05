@@ -1,0 +1,9 @@
+{
+  "emmet.useInlineCompletions": true,
+  "emmet.triggerExpansionOnTab": false,
+  "emmet.preferences": {},
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "javascript.suggest.autoImports": true
+}

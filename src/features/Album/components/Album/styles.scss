@@ -1,0 +1,29 @@
+.album {
+  position: relative;
+
+  &__thumbnail {
+    & > img {
+      width: 100px;
+      border-radius: 0.5rem;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 4px;
+    font-weight: bold;
+    z-index: 10;
+  }
+
+  &__icon:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__name {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+}
