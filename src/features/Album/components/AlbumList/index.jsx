@@ -13,6 +13,11 @@ AlbumList.propTypes = {
 AlbumList.defaultProps = { onAlbumClick: null, onDeleteClick: null };
 
 function AlbumList({ albumList, onAlbumClick, onDeleteClick }) {
+  const handleDeleteClick = (album) => {
+    if (!onDeleteClick) return;
+    onDeleteClick(album);
+  };
+
   const handleAlbumClick = (album, idx) => {
     if (!onAlbumClick) return;
     onAlbumClick(album, idx);
@@ -26,7 +31,7 @@ function AlbumList({ albumList, onAlbumClick, onDeleteClick }) {
           className={classNames({ completed: album.status === 'completed' })}
           onClick={() => handleAlbumClick(album, idx)}
         >
-          <Album album={album} />
+          <Album album={album} onDeleteClick={handleDeleteClick} />
         </li>
       ))}
     </ul>

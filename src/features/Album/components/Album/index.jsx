@@ -10,15 +10,22 @@ Album.propTypes = {
 Album.defaultProps = { onDeleteClick: null };
 
 function Album({ album, onDeleteClick }) {
-  const handleClick = (album) => {
+  const handleDeleteClick = (album) => {
+    if (!onDeleteClick) return;
     onDeleteClick(album);
   };
 
   return (
     <div className="album">
-      {/* <div className="album__icon" onClick={() => handleClick(album)}>
+      <div
+        className="album__icon"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleDeleteClick(album);
+        }}
+      >
         X
-      </div> */}
+      </div>
       <div className="album__thumbnail">
         <img src={album.thumbnailUrl} alt={album.title} />
       </div>

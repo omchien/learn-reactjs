@@ -36,6 +36,15 @@ function AlbumFeatures(props) {
     return 'all';
   });
 
+  const handleDeleteClick = (album) => {
+    const index = albumList.findIndex((x) => x.id === album.id);
+    if (index < 0) return;
+
+    const newAlbumList = [...albumList];
+    newAlbumList.splice(index, 1);
+    setAlbumList(newAlbumList);
+  };
+
   const handleAlbumClick = (album, idx) => {
     // clone current array to the new one
     const newAlbumList = [...albumList];
@@ -73,10 +82,6 @@ function AlbumFeatures(props) {
     const newAlbumList = [...albumList];
     newAlbumList.push(newAlbum);
     setAlbumList(newAlbumList);
-  };
-
-  const handleDeleteClick = (album) => {
-    console.log(album);
   };
 
   return (
