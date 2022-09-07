@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Album from '../Album';
+
 import './styles.scss';
 
 AlbumList.propTypes = {
