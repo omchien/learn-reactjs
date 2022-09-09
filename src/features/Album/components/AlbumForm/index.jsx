@@ -1,3 +1,4 @@
+import { Button, Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import './styles.scss';
@@ -9,44 +10,85 @@ AlbumForm.propTypes = {
 AlbumForm.defaultProps = { onSubmit: null };
 
 function AlbumForm({ onSubmit }) {
-  const [albumTitle, setAlbumTitle] = useState('');
-  const [albumThumbnailUrl, setalbumThumbnailUrl] = useState('');
+  // const [albumTitle, setAlbumTitle] = useState('');
+  // const [albumThumbnailUrl, setalbumThumbnailUrl] = useState('');
 
-  const handleTitleChange = (e) => {
-    setAlbumTitle(e.target.value);
-  };
+  const [form] = Form.useForm();
 
-  const handleThumbnailChange = (e) => {
-    setalbumThumbnailUrl(e.target.value);
-  };
+  // const handleTitleChange = (e) => {
+  //   setAlbumTitle(e.target.value);
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleThumbnailChange = (e) => {
+  //   setalbumThumbnailUrl(e.target.value);
+  // };
 
-    if (!onSubmit) return;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    const formValues = {
-      title: albumTitle,
-      thumbnailUrl: albumThumbnailUrl,
-    };
+  //   if (!onSubmit) return;
 
-    onSubmit(formValues);
+  //   const formValues = {
+  //     title: albumTitle,
+  //     thumbnailUrl: albumThumbnailUrl,
+  //   };
 
-    setAlbumTitle('');
-    setalbumThumbnailUrl('');
+  //   onSubmit(formValues);
+
+  //   setAlbumTitle('');
+  //   setalbumThumbnailUrl('');
+  // };
+
+  const handleSubmit = (formValues) => {
+    if (onSubmit) onSubmit(formValues);
+    form.resetFields();
   };
 
   return (
-    <form className="album-form" onSubmit={handleSubmit}>
-      <input type="text" value={albumTitle} placeholder="title" onChange={handleTitleChange} />
-      <input
-        type="text"
-        value={albumThumbnailUrl}
-        placeholder="thumbnail url"
-        onChange={handleThumbnailChange}
-      />
-      <input type="submit" />
-    </form>
+    <Form form={form} onFinish={handleSubmit}>
+      <Form.Item
+        label="Title"
+        name="title"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter title',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="ThumnailUrl"
+        name="thumbnailUrl"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter thumnail url',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+
+    // <form className="album-form" onSubmit={handleSubmit}>
+    //   <input type="text" value={albumTitle} placeholder="title" onChange={handleTitleChange} />
+    //   <input
+    //     type="text"
+    //     value={albumThumbnailUrl}
+    //     placeholder="thumbnail url"
+    //     onChange={handleThumbnailChange}
+    //   />
+    //   <input type="submit" />
+    // </form>
   );
 }
 

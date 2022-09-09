@@ -12,7 +12,6 @@ function AlbumFeatures(props) {
       <Switch>
         <Route path={match.path} component={AlbumListPage} exact />
         <Route path={`${match.path}/:albumId`} component={AlbumDetailPage} exact />
-
         <Route component={NotFound} />
       </Switch>
     </div>

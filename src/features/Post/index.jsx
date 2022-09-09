@@ -6,13 +6,11 @@ import PostListPage from './pages/PostListPage';
 
 function PostFeatures(props) {
   const match = useRouteMatch();
-
   return (
     <div>
       <Switch>
         <Route path={match.path} component={PostListPage} exact />
         <Route path={`${match.path}/:postId`} component={PostDetailPage} exact />
-
         <Route component={NotFound} />
       </Switch>
     </div>

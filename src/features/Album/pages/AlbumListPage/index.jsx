@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { useEffect } from 'react';
 
-function AlbumListPage(props) {
+export default function AlbumListPage(props) {
   const initAlbumList = [
     {
       id: 1,
@@ -93,7 +93,6 @@ function AlbumListPage(props) {
       id: albumList.length + 1,
       ...formValues,
     };
-    console.log(newAlbum);
     const newAlbumList = [...albumList];
     newAlbumList.push(newAlbum);
     setAlbumList(newAlbumList);
@@ -117,4 +116,4 @@ function AlbumListPage(props) {
   );
 }
 
-export default AlbumListPage;
+// export default AlbumListPage;
